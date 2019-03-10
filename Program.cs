@@ -2,6 +2,9 @@
 using Telegram.Bot;
 using Telegram.Bot.Types.Enums;
 
+//=====================
+//Bot name @r2_Test_Bot
+//=====================
 
 namespace TelegramBotTest
 {
