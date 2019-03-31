@@ -40,11 +40,11 @@ namespace TelegramBotTest
                     string Text = Function.StartCommand();                       
                     await Bot.SendTextMessageAsync(message.From.Id, Text);
                     break;
-
                 case "/help":
                     string HelpText = Function.HelpCommand();                     
                     await Bot.SendTextMessageAsync(message.From.Id, HelpText);
-                    break;                              
+                    break;
+                    
                 case "/p":
                     string PText = Function.PMounthly();
                     await Bot.SendTextMessageAsync(message.From.Id, PText);
@@ -54,15 +54,8 @@ namespace TelegramBotTest
                     await Bot.SendTextMessageAsync(message.From.Id, RText);
                     break;          
                    
-                //case string k when k.Contains("/id"):
-                //    string id = k.Replace("/id", "");
-                    
-                //    string MTesxt = Function.Member(id);
-                //    await Bot.SendTextMessageAsync(message.From.Id, MTesxt);
-                //    break;
-
-                case string r when r.Contains("/r"):
-                    r = r.Replace("/r", "");
+                case string r when r.Contains("/rn"):
+                    r = r.Replace("/rn", "");
                     int Rtimes = int.Parse(r);
                     while(Rtimes!=0)
                     {
@@ -71,8 +64,8 @@ namespace TelegramBotTest
                         Rtimes--;
                     }
                     break;
-                case string p when p.Contains("/p"):
-                    p = p.Replace("/p", "");
+                case string p when p.Contains("/pn"):
+                    p = p.Replace("/pn", "");
                     int Ptimes = int.Parse(p);
                     while (Ptimes != 0)
                     {

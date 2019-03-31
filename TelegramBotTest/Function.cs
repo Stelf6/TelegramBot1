@@ -10,7 +10,9 @@ namespace TelegramBotTest
         {
             return @"
 /p - mounthly pictures
-/r - random picture";
+/pn(num)  
+/r - random picture
+/rn(num)";
         }
 
         public static string StartCommand()
