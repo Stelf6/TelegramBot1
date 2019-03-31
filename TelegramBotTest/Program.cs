@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Telegram.Bot;
-using Telegram.Bot.Args;
 using Telegram.Bot.Types.Enums;
-
 
 
 namespace TelegramBotTest
@@ -33,10 +26,10 @@ namespace TelegramBotTest
 
         private static async void Bot_OnMessage(object sender, Telegram.Bot.Args.MessageEventArgs e)
         {
+            //e - user message
             var message = e.Message;
             if(message.Type!=MessageType.Text || message==null)
             {
-                Console.WriteLine("lol");
                 return;
             }
             Console.WriteLine(message.Text);
@@ -59,6 +52,34 @@ namespace TelegramBotTest
                 case "/r":
                     string RText = Function.RandomUrl();
                     await Bot.SendTextMessageAsync(message.From.Id, RText);
+                    break;          
+                   
+                //case string k when k.Contains("/id"):
+                //    string id = k.Replace("/id", "");
+                    
+                //    string MTesxt = Function.Member(id);
+                //    await Bot.SendTextMessageAsync(message.From.Id, MTesxt);
+                //    break;
+
+                case string r when r.Contains("/r"):
+                    r = r.Replace("/r", "");
+                    int Rtimes = int.Parse(r);
+                    while(Rtimes!=0)
+                    {
+                        string RTText = Function.RandomUrl();
+                        await Bot.SendTextMessageAsync(message.From.Id, RTText);
+                        Rtimes--;
+                    }
+                    break;
+                case string p when p.Contains("/p"):
+                    p = p.Replace("/p", "");
+                    int Ptimes = int.Parse(p);
+                    while (Ptimes != 0)
+                    {
+                        string PTText = Function.PMounthly();
+                        await Bot.SendTextMessageAsync(message.From.Id, PTText);
+                        Ptimes--;
+                    }
                     break;
                 default:
                     break;

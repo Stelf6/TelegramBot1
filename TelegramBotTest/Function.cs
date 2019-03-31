@@ -100,6 +100,31 @@ enter /help to see more command";
 
             return Parse(RandomUrl);
         }
+        public static string Member(string id)
+        {
+            string Result = null;
+            Random rand = new Random();
+
+            string url = "https://www.pixiv.net/member.php?id=" + id;
+
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument document = web.Load(url);
+            HtmlNode[] nodes = null;
+
+            nodes = document.DocumentNode.SelectNodes("//div/div[2]/div/div[1]/div[2]/ul[1]/li/a").ToArray();
+
+            int num = rand.Next(0, nodes.Length);
+            Result = nodes[num].InnerHtml.ToString();
+
+            Result = Result.Remove(0, 10);
+            Result = Result.Remove(95);
+            //get image url
+
+            //get full resulution image
+            Result = Result.Replace("c/600x1200_90/", "");
+                
+            return Result;
+        }
 
         public static string Parse(string url)
         {
